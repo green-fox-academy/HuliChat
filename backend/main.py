@@ -22,7 +22,7 @@ def get():
     cur.execute('''select * from chat.licence_plates''')
     r = [dict((cur.description[i][0], value)
               for i, value in enumerate(row)) for row in cur.fetchall()]
-    return json.dumps({'myCollection' : r})
+    return json.dumps(r)
 
 
 
@@ -45,11 +45,20 @@ def messages():
 def users():
     return "users"
 
-#signup
-#login
-#messages
-#users
-#
+
+@app.route('/users/<user_id>')
+def user_search(user_id):
+    cur = mysql.connect().cursor()
+    cur.execute('select user_name from hulichat.user_data WHERE user_id = "' + user_id + '"')
+    r = [dict((cur.description[i][0], value)
+        for i, value in enumerate(row)) for row in cur.fetchall()]
+    return json.dumps(r)
+
+
+@app.route('/messages/<user_id>')
+def message_search():
+    return "<user_id>"
+
 
 
 if __name__ == "__main__":
