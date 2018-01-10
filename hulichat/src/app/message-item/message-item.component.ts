@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Message } from '../models/message';
+import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'message-item',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() message : Message;
+
+  isOwnMessage : Boolean;
+
+  constructor(private chatService : ChatService) { }
 
   ngOnInit() {
   }
