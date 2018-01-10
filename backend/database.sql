@@ -5,5 +5,8 @@ CREATE TABLE user_data ( user_id INT(50) , user_pw VARCHAR(50) , user_pic TEXT ,
 
 
 
-INSERT INTO message_data (message_text, from_user_id, to_user_id, time_stamp, message_id) values ('SZIA HOGYVAGY?', 0, 1, '08-11-11', 0);
+INSERT INTO message_data (message_text, from_user_id, to_user_id, time_stamp, message_id) values ('SZIA HOGYVAGY?', 0, 1, '', 0);
 INSERT INTO user_data (user_id, user_pw, user_pic, user_name) values (0, "asd123", "something", "testytest")
+
+
+INSERT INTO message_data (message_text, from_user_id, to_user_id, time_stamp, message_id) values ('A greenfox meno', 0, 1, CURRENT_TIMESTAMP(), 1);
