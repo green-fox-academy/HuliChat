@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ChatRoutingModule } from './/chat-routing.module';
+import {HttpClientModule} from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,6 +12,7 @@ import { ChatFormComponent } from './chat-form/chat-form.component';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { UserItemComponent } from './user-item/user-item.component';
 import { MessageItemComponent } from './message-item/message-item.component';
+
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { MessageItemComponent } from './message-item/message-item.component';
   ],
   imports: [
     BrowserModule,
-    ChatRoutingModule
+    ChatRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
