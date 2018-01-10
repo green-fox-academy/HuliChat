@@ -9,4 +9,4 @@ INSERT INTO message_data (message_text, from_user_id, to_user_id, time_stamp, me
 INSERT INTO user_data (user_id, user_pw, user_pic, user_name) values (0, "asd123", "something", "testytest")
 
 
-INSERT INTO message_data (message_text, from_user_id, to_user_id, time_stamp, message_id) values ('A greenfox meno', 0, 1, CURRENT_TIMESTAMP(), 1);
+INSERT INTO message_data (message_text, from_user_id, to_user_id, time_stamp, message_id) values ('pleasework', 0, 1, NOW, 2);
