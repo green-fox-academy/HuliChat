@@ -1,14 +1,16 @@
 from flask import Flask, jsonify, json, request
 from flaskext.mysql import MySQL
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app)
 mysql = MySQL()
 
 
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'GR18pv'
 app.config['MYSQL_DATABASE_DB'] = 'hulichat'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
