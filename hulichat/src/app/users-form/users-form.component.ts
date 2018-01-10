@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from '../services/chat.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'users-form',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersFormComponent implements OnInit {
 
-  constructor() { }
+  users : User[];
+
+  constructor(private chatService : ChatService) { }
 
   ngOnInit() {
   }
