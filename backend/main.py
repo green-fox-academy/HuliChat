@@ -1,4 +1,4 @@
-from flask import Flask, jsonify,json
+from flask import Flask, jsonify, json, request
 from flaskext.mysql import MySQL
 
 
@@ -9,26 +9,25 @@ mysql = MySQL()
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
-app.config['MYSQL_DATABASE_DB'] = 'chat'
+app.config['MYSQL_DATABASE_DB'] = 'hulichat'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-
 mysql.init_app(app)
-
 
 
 @app.route('/')
 def get():
     cur = mysql.connect().cursor()
-    cur.execute('''select * from chat.licence_plates''')
+    cur.execute('select * from hulichat.message_data, hulichat.user_data')
     r = [dict((cur.description[i][0], value)
               for i, value in enumerate(row)) for row in cur.fetchall()]
     return json.dumps(r)
 
 
-
-@app.route('/signup')
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    return "register"
+    username = request.args.get("username")
+    password = request.args.get("password")
+    return "Hola"
 
 
 @app.route('/login')
@@ -38,12 +37,20 @@ def login():
 
 @app.route('/messages')
 def messages():
-    return "messages"
+    cur = mysql.connect().cursor()
+    cur.execute('select message_text from hulichat.message_data')
+    r = [dict((cur.description[i][0], value)
+        for i, value in enumerate(row)) for row in cur.fetchall()]
+    return json.dumps(r)
 
 
 @app.route('/users')
 def users():
-    return "users"
+    cur = mysql.connect().cursor()
+    cur.execute('select user_name from hulichat.user_data')
+    r = [dict((cur.description[i][0], value)
+        for i, value in enumerate(row)) for row in cur.fetchall()]
+    return json.dumps(r)
 
 
 @app.route('/users/<user_id>')
@@ -55,9 +62,13 @@ def user_search(user_id):
     return json.dumps(r)
 
 
-@app.route('/messages/<user_id>')
-def message_search():
-    return "<user_id>"
+@app.route('/messages/<message_id>')
+def message_search(message_id):
+    cur = mysql.connect().cursor()
+    cur.execute('select message_text from hulichat.message_data WHERE message_id = "' + message_id + '"')
+    r = [dict((cur.description[i][0], value)
+        for i, value in enumerate(row)) for row in cur.fetchall()]
+    return json.dumps(r)
 
 
 
