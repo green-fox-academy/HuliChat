@@ -5,7 +5,7 @@
 #app = Flask(__name__)
 #mysql = MySQL()
 
-from flask import Flask, request, render_template
+from flask import Flask, json, request, render_template
 import pymysql
 app = Flask(__name__)
 db = pymysql.connect("localhost", "root", "root", "chat")
@@ -19,7 +19,7 @@ def someName():
     sql = "SELECT * FROM licence_plates"
     cursor.execute(sql)
     results = cursor.fetchall()
-    return render_template('index.html', results=results)
+    return json.dumps(results)
 
 #app.config['MYSQL_DATABASE_USER'] = 'root'
 #app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
