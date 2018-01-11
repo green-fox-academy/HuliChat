@@ -1,18 +1,25 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../models/user';
+import { ChatService } from '../services/chat.service';
+import { User } from '../models/user.model';
+import { sqlTest } from '../models/test';
 
 @Component({
-  selector: 'user-item',
+  selector: 'app-user-item',
   templateUrl: './user-item.component.html',
   styleUrls: ['./user-item.component.css']
 })
 export class UserItemComponent implements OnInit {
 
-  @Input() user : User;
+  sqlUsers: sqlTest [];
 
-  constructor() { }
+  @Input() user: User;
+
+  constructor(private chatService: ChatService) { }
 
   ngOnInit() {
+    this.chatService.getLocalHost().subscribe((response) => {
+      this.sqlUsers = response;
+    });
   }
 
 }
