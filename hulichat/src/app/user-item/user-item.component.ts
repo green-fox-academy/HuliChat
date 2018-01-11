@@ -14,7 +14,7 @@ export class UserItemComponent implements OnInit {
 
   @Input() user: User;
 
-  constructor(private chatService: ChatService) { }
+  constructor(public chatService: ChatService) { }
 
   ngOnInit() {
     this.chatService.getLocalHost().subscribe((response) => {
