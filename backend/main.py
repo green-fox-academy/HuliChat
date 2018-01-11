@@ -10,7 +10,7 @@ mysql = MySQL()
 
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'GR18pv'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
 app.config['MYSQL_DATABASE_DB'] = 'hulichat'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
@@ -35,6 +35,15 @@ def signup():
 @app.route('/login')
 def login():
     return "login"
+
+
+@app.route('/email/<user_email>')
+def email(user_email):
+    cur = mysql.connect().cursor()
+    cur.execute('select user_name from hulichat.user_data where user_email = "' + user_email + '"')
+    r = [dict((cur.description[i][0], value)
+        for i, value in enumerate(row)) for row in cur.fetchall()]
+    return json.dumps(r)
 
 
 @app.route('/messages')
