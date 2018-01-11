@@ -1,14 +1,7 @@
 <div class="userItem">
-  <span class="status" [ngClass]=(user.status)>
-  </span>
   <span class="userName">
-    {{user.displayName}}
+      <span class="status" [ngClass]=(user.status)></span>
+    {{user.displayName}}<img src="https://openclipart.org/image/2400px/svg_to_png/211821/matt-icons_preferences-desktop-personal.png">
   </span>
-  <!-- <table>
-  <tr *ngFor='let user of sqlUsers'>
-    <td>{{ user.message_id }}</td>
-    <td>{{ user.message_text }}</td>
-  </tr>
-</table> -->
 </div>
 <!-- *ngIf="user.status==='online'" -->
