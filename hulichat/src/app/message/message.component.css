@@ -10,7 +10,8 @@
 }
 
 .isOwnMessageContainer{
-    background-color: #01579B;
+    /* background-color: #01579B; */
+    background-color: rgb(1, 155, 78);
 }
 
 .messageData{
