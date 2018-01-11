@@ -40,5 +40,15 @@
 }
 
 .userName{
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+img {
+    background-color: white;
+    max-width: 30px;
+    max-height: 30px;
 }

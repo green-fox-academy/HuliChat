@@ -81,4 +81,9 @@ export class ChatService {
     return this.http.get('http://localhost:5000')
     .map(res => res.json());
   }
+
+  getUserByEmail(email){
+    return this.http.get(`http://localhost:5000/user/${email}`)
+    .map(res => res.json());
+  }
 }
