@@ -23,12 +23,18 @@ export class NavbarComponent implements OnInit {
     this.user.subscribe(user => {
       if (user) {
         this.userEmail = user.email;
-        this.username = user.displayName;
       }
     });
-    this.chatService.getUserByEmail(this.userEmail).subscribe(user_nickname => {
-      this.user_nickName = user_nickname;
-    })
+    // this.user = this.authService.authUser();
+    // this.user.subscribe(user => {
+    //   if (user) {
+    //     this.userEmail = user.email;
+    //     this.username = user.displayName;
+    //   }
+    // });
+    // this.chatService.getUserByEmail(this.userEmail).subscribe(user_nickname => {
+    //   this.user_nickName = user_nickname;
+    // })
   }
 
   logout() {

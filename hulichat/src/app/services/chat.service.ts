@@ -83,7 +83,12 @@ export class ChatService {
   }
 
   getUserByEmail(email){
-    return this.http.get(`http://localhost:5000/user/${email}`)
+    return this.http.get(`http://localhost:5000/users/${email}`)
+    .map(res => res.json());
+  }
+
+  getLocalImg(user_id){
+    return this.http.get(`http://localhost:5000/img/${user_id}`)
     .map(res => res.json());
   }
 }
